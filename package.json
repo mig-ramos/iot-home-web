@@ -1,6 +1,8 @@
 {
   "name": "iot-home-web",
   "version": "0.1.0",
+  "author": "Miguel Arcanjo Ramos",
+  "description": "Residential protection and control system.",
   "private": true,
   "scripts": {
     "dev": "next dev",
