@@ -1,3 +1,5 @@
+import { Header } from "./header";
+
 export default function LayoutPublic({
   children,
 }: Readonly<{
@@ -5,6 +7,7 @@ export default function LayoutPublic({
 }>) {
   return (
     <div>
+      <Header />
       <main className="antialiased">{children}</main>
     </div>
   );
