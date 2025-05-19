@@ -1,4 +1,5 @@
-import { Container } from "../container";
+import { Container } from "./container";
+import { Footer } from "./footer";
 import { Header } from "./header";
 
 export default function LayoutPublic({
@@ -12,6 +13,7 @@ export default function LayoutPublic({
       <Container>
         <main className="antialiased">{children}</main>
       </Container>
+      <Footer />
     </div>
   );
 }

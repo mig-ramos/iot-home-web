@@ -20,7 +20,7 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <main
-        className={`${roboto.variable} font-[family-name:var(--font-roboto)] flex items-center flex-col justify-center min-h-[calc(100vh-110px)]`}
+        className={`${roboto.variable} font-[family-name:var(--font-roboto)] flex items-center flex-col justify-center min-h-[calc(100vh-150px)]`}
       >
         <h2 className="font-medium text-2xl mb-2">
           Administração da <span className="text-blue-500">IOT</span>Home
@@ -29,11 +29,10 @@ export default function Home() {
           Atendimentos, clientes
         </h1>
         <Image
-          className="max-w-sm md:max-w-xl"
           src="/hero.svg"
           alt="Imagem hero do iot home"
-          width={600}
-          height={500}
+          width={550}
+          height={300}
           priority
         />
       </main>

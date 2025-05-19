@@ -4,6 +4,7 @@ import { FiUser, FiLogOut, FiLogIn } from "react-icons/fi";
 import { AuthContext } from "data/contexts/AuthContext";
 import { canSSRGuest } from "data/utils/canRGuest";
 import { useRouter } from "next/navigation";
+import { Logo } from "../logo";
 
 export function Header() {
   const { signOut, isAuthenticated } = useContext(AuthContext);
@@ -13,9 +14,7 @@ export function Header() {
     <header className="w-full flex items-center px-2 py-4 bg-white h-20 shadow-sm">
       <div className="w-full flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/">
-          <h1 className="font-bold text-2xl pl-1 hover:tracking-widest duration-300">
-            <span className="text-blue-500">IOT</span>Home
-          </h1>
+          <Logo />
         </Link>
 
         <div className="flex items-baseline gap-8">
