@@ -1,5 +1,5 @@
 import LayoutPrivate from "@/components/admin/layoutPrivate";
-import { Container } from "@/components/public/container";
+import { Container } from "@/components/container";
 import { canSSRAuth } from "data/utils/canRAuth";
 import Head from "next/head";
 import React, { useState, useEffect, useContext } from "react";

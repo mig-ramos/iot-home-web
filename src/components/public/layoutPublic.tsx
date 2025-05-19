@@ -1,4 +1,4 @@
-import { Container } from "./container";
+import { Container } from "../container";
 import { Footer } from "./footer";
 import { Header } from "./header";
 

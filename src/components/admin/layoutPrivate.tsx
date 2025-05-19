@@ -1,4 +1,5 @@
 import ForcarAutenticacao from "./forceAuthentication";
+import { HeaderDashboard } from "./headerDashboard";
 
 export default function LayoutPrivate({
   children,
@@ -7,7 +8,10 @@ export default function LayoutPrivate({
 }>) {
   return (
     <div>
-      <ForcarAutenticacao>{children}</ForcarAutenticacao>
+      <ForcarAutenticacao>
+        <HeaderDashboard />
+        {children}
+      </ForcarAutenticacao>
     </div>
   );
 }
