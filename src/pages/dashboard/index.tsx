@@ -5,11 +5,23 @@ import { canSSRAuth } from "data/utils/canRAuth";
 import Head from "next/head";
 import Link from "next/link";
 import React, { useState, useEffect, useContext } from "react";
+import { AuthContext } from "data/contexts/AuthContext";
 import useWebSocket from "react-use-websocket";
 
 const WS_URL = "ws://localhost:3001";
 
 export default function Dashboard() {
+  const { isAuthenticated, user } = useContext(AuthContext);
+  const role = user.role;
+
+  switch (role) {
+    case "CLIENT":
+      break;
+    case "ADMIN":
+      break;
+    default:
+  }
+
   const [events, setEvents] = useState<any>([]);
 
   const { lastMessage } = useWebSocket(WS_URL, {
@@ -34,49 +46,55 @@ export default function Dashboard() {
       </Head>
       <LayoutPrivate>
         <Container>
-          <main className="mt-9 mb-2">
-            <div className="flex items-center justify-between">
-              <h1 className="text-3xl font-bold">Chamados</h1>
-              <Link
-                href="/dashboard/new"
-                className=" bg-blue-500 px-4 py-1 rounded text-white"
-              >
-                Abrir chamado
-              </Link>
-            </div>
+          {isAuthenticated && user.role === "ADMIN" && (
+            <>
+              <main className="mt-9 mb-2">
+                <div className="flex items-center justify-between">
+                  <h1 className="text-3xl font-bold">Chamados</h1>
+                  <Link
+                    href="/dashboard/new"
+                    className=" bg-blue-500 px-4 py-1 rounded text-white"
+                  >
+                    Abrir chamado
+                  </Link>
+                </div>
 
-            <table className="min-w-full my-2">
-              <thead>
-                <tr>
-                  <th className="font-medium text-left pl-1">CLIENTE</th>
-                  <th className="font-medium text-left hidden sm:block">
-                    CADASTRO
-                  </th>
-                  <th className="font-medium text-left">STATUS</th>
-                  <th className="font-medium text-left">#</th>
-                </tr>
-              </thead>
-              <tbody>
-                <TicketItem />
-                <TicketItem />
-              </tbody>
-            </table>
-          </main>
+                <table className="min-w-full my-2">
+                  <thead>
+                    <tr>
+                      <th className="font-medium text-left pl-1">CLIENTE</th>
+                      <th className="font-medium text-left hidden sm:block">
+                        CADASTRO
+                      </th>
+                      <th className="font-medium text-left">STATUS</th>
+                      <th className="font-medium text-left">#</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <TicketItem />
+                    <TicketItem />
+                  </tbody>
+                </table>
+              </main>
 
-          <h2 className="border-t-2 border-2 rounded-xl border-green-500 mt-2 px-4 py-1">
-            Eventos em Tempo Real
-          </h2>
-          <ol className="mt-2">
-            {events.map((event: any, index: any) => (
-              <li className="py-1" key={index}>
-                <strong>Status:</strong>{" "}
-                <span className="text-red-500">{event.status} - </span>
-                <strong>Description:</strong> {event.description} -{" "}
-                <strong>Qdo:</strong> {event.createdAt} -{" "}
-                <strong>Sensor:</strong> {event.sensor_id}
-              </li>
-            ))}
-          </ol>
+              <h2 className="border-t-2 border-2 rounded-xl border-green-500 mt-2 px-4 py-1">
+                Eventos em Tempo Real
+              </h2>
+              <ol className="mt-2">
+                {events.map((event: any, index: any) => (
+                  <li className="py-1" key={index}>
+                    <strong>Status:</strong>{" "}
+                    <span className="text-red-500">{event.status} - </span>
+                    <strong>Description:</strong> {event.description} -{" "}
+                    <strong>Qdo:</strong> {event.createdAt} -{" "}
+                    <strong>Sensor:</strong> {event.sensor_id}
+                  </li>
+                ))}
+              </ol>
+            </>
+          )}
+
+          {isAuthenticated && user.role === "CLIENT" && <></>}
         </Container>
       </LayoutPrivate>
     </div>

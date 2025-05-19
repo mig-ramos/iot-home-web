@@ -1,6 +1,7 @@
 import { NewCustomerForm } from "@/components/admin/customer/newCustomerForm";
 import { Container } from "@/components/container";
 import Link from "next/link";
+import { canSSRAuth } from "data/utils/canRAuth";
 
 export default function NewCustomer() {
   return (
@@ -20,3 +21,9 @@ export default function NewCustomer() {
     </Container>
   );
 }
+
+export const getServerSideProps = canSSRAuth(async (ctx) => {
+  return {
+    props: {},
+  };
+});

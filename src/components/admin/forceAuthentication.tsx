@@ -4,7 +4,7 @@ import loading from "../../assets/loading.gif";
 import { useContext } from "react";
 import Router from "next/router";
 import { AuthContext } from "data/contexts/AuthContext";
-export default function ForcarAutenticacao(props: any) {
+export default function ForceAutentication(props: any) {
   const { user, carregando, isAuthenticated } = useContext(AuthContext);
   function renderizarConteudo() {
     return (
