@@ -1,10 +1,12 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Image from "next/image";
 import imgLoading from "assets/loading.gif";
 import { toast } from "sonner";
 import router from "next/router";
 import Head from "next/head";
 import { InputText } from "@/components/input";
+import { AuthContext } from "../data/contexts/AuthContext";
+import { canSSRGuest } from "data/utils/canRGuest";
 
 export default function Auth() {
   const [modo, setModo] = useState<"login" | "cadastro">("login");
@@ -14,6 +16,7 @@ export default function Auth() {
   // const [role, setRole] = useState("");
   const [passConfirm, setPassConfirm] = useState("");
   const [loading, setLoading] = useState(false);
+  const { signIn, signUp } = useContext(AuthContext);
 
   function clearForm() {
     setName("");
@@ -34,7 +37,7 @@ export default function Auth() {
         email,
         password,
       };
-      // await signIn(data);
+      await signIn(data);
       // clearForm();
       setLoading(false);
     } else {
@@ -57,7 +60,7 @@ export default function Auth() {
         email,
         password,
       };
-      // await signUp(data);
+      await signUp(data);
       clearForm();
       setModo("login");
       setLoading(false);
@@ -157,3 +160,9 @@ export default function Auth() {
     </div>
   );
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {},
+  };
+});

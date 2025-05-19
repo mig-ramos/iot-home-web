@@ -1,6 +1,14 @@
+import { useContext } from "react";
 import Link from "next/link";
-import { FiUser, FiLogOut } from "react-icons/fi";
+import { FiUser, FiLogOut, FiLogIn } from "react-icons/fi";
+import { AuthContext } from "data/contexts/AuthContext";
+import { canSSRGuest } from "data/utils/canRGuest";
+import { useRouter } from "next/navigation";
+
 export function Header() {
+  const { signOut, isAuthenticated } = useContext(AuthContext);
+  const router = useRouter();
+
   return (
     <header className="w-full flex items-center px-2 py-4 bg-white h-20 shadow-sm">
       <div className="w-full flex items-center justify-between max-w-7xl mx-auto">
@@ -11,7 +19,7 @@ export function Header() {
         </Link>
 
         <div className="flex items-baseline gap-8">
-          {true ? (
+          {isAuthenticated ? (
             <Link href={"/dashboard"} className="flex gap-2">
               <FiUser size={26} color="blue" />
             </Link>
@@ -20,14 +28,23 @@ export function Header() {
               <FiUser size={26} color="blue" />
             </Link>
           )}
-
-          <form action="">
-            <button className="flex gap-2 hover:cursor-pointer">
+          {isAuthenticated && (
+            <button
+              className={`hover:text-white hover:font-bold text-center text-black hover:bg-yellow-400 rounded-xl  flex items-center justify-center dark:black dark:bg-white dark:hover:bg-yellow-500 dark:hover:border-yellow-700 dark:border-orange-700 m-2 py-1 px-4 ml-auto
+    `}
+              onClick={signOut}
+            >
               <FiLogOut size={26} color="blue" />
             </button>
-          </form>
+          )}
         </div>
       </div>
     </header>
   );
 }
+
+export const getServerSideProps = canSSRGuest(async (ctx) => {
+  return {
+    props: {},
+  };
+});
