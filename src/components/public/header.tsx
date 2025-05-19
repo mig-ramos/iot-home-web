@@ -10,14 +10,22 @@ export function Header() {
           </h1>
         </Link>
 
-        <div className="flex items-baseline gap-4">
-          <Link href={"/dashboard"}>
-            <FiUser size={26} color="#4b5563" />
-          </Link>
+        <div className="flex items-baseline gap-8">
+          {true ? (
+            <Link href={"/dashboard"} className="flex gap-2">
+              <FiUser size={26} color="blue" />
+            </Link>
+          ) : (
+            <Link href={"/dashboard"} className="flex gap-2">
+              <FiUser size={26} color="blue" />
+            </Link>
+          )}
 
-          <button>
-            <FiLogOut size={26} color="#4b5563" />
-          </button>
+          <form action="">
+            <button className="flex gap-2 hover:cursor-pointer">
+              <FiLogOut size={26} color="blue" />
+            </button>
+          </form>
         </div>
       </div>
     </header>

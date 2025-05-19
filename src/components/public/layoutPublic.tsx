@@ -1,4 +1,4 @@
-import { Container } from "./container";
+import { Container } from "../container";
 import { Header } from "./header";
 
 export default function LayoutPublic({
