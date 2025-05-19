@@ -50,7 +50,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
     const { "session.token": token } = parseCookies();
     if (token) {
       api
-        .get("/user/me")
+        .post("/user/me")
         .then((response) => {
           const { id, name, email, role }: any = response.data;
           setUser({
@@ -77,9 +77,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
         password,
       });
       const { id, name, role, token }: any = response.data;
-      // const { accessToken }: any = response.data;
       setCookie(undefined, "session.token", token, {
-        // setCookie(undefined, "session.token", token, {
         maxAge: 60 * 60 * 24 * 7, // Expirar em 7 dias
         path: "/", // quais caminhos terao acesso ao cookie
       });

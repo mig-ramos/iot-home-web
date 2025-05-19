@@ -30,8 +30,7 @@ export function Header() {
           )}
           {isAuthenticated && (
             <button
-              className={`hover:text-white hover:font-bold text-center text-black hover:bg-yellow-400 rounded-xl  flex items-center justify-center dark:black dark:bg-white dark:hover:bg-yellow-500 dark:hover:border-yellow-700 dark:border-orange-700 m-2 py-1 px-4 ml-auto
-    `}
+              className="hover:text-white hover:font-bold text-center text-black hover:bg-yellow-400 rounded-xl  flex items-center justify-center dark:black dark:bg-white dark:hover:bg-yellow-500 dark:hover:border-yellow-700 dark:border-orange-700 m-2 py-1 px-4 ml-auto"
               onClick={signOut}
             >
               <FiLogOut size={26} color="blue" />
