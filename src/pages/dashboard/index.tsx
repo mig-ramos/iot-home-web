@@ -1,5 +1,5 @@
 import LayoutPrivate from "@/components/admin/layoutPrivate";
-import { TicketItem } from "@/components/admin/tikectItem";
+import { TicketItem } from "@/components/admin/ticket/tikectItem";
 import { Container } from "@/components/container";
 import { canSSRAuth } from "data/utils/canRAuth";
 import Head from "next/head";

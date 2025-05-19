@@ -1,4 +1,4 @@
-import { CardCustomer } from "@/components/admin/cardcustomer";
+import { CardCustomer } from "@/components/admin/customer/cardCustomer";
 import { Container } from "@/components/container";
 import Link from "next/link";
 
