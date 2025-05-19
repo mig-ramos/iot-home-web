@@ -1,15 +1,14 @@
 import { FiUser, FiLogOut } from "react-icons/fi";
 import Link from "next/link";
+import { Logo } from "./logo/logo";
 
 export const Header = () => {
   let linkActive = "text-green-700 font-bold bg-white py-1 rounded-xl";
   return (
-    <header className="w-full flex items-center px-2 py-4 bg-white h-20 shadow-sm">
+    <header className="w-full flex items-center px-2 py-4 bg-white h-16 shadow-sm">
       <div className="w-full flex items-center justify-between max-w-7xl mx-auto">
         <Link href="/">
-          <h1 className="font-bold text-3xl pl-1 hover:tracking-widest duration-300">
-            <span className="text-blue-500">IOT</span>Home
-          </h1>
+          <Logo />
         </Link>
 
         <div className="flex items-baseline gap-8">
